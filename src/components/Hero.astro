@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import heroFood from '../assets/images/klass-interior-main.jpg';
+import logo from '../assets/images/klass-logo.png';
+import { site } from '../data/siteContent';
+import Icon from './Icon.astro';
+---
+
+<section class="hero" id="top">
+  <div class="hero__texture" aria-hidden="true"></div>
+  <div class="hero__inner container">
+    <div class="hero__content">
+      <p class="hero__eyebrow">SPORTS RESTAURANT & BAR</p>
+      <Image class="hero__logo" src={logo} alt="Klass" width={420} priority />
+      <h1 class="hero__title">
+        <span class="hero__title-line">GOOD FOOD.</span>
+        <span class="hero__title-line hero__title-line--accent">GOOD TIMES.</span>
+      </h1>
+      <p class="hero__lead">相模大野駅から徒歩3分。<br class="u-desktop-only" />昼から深夜まで楽しめるSports Restaurant & Bar。</p>
+      <div class="hero__actions">
+        <a class="button button--red" href="#menu">
+          <span class="button__label">人気メニューを見る</span>
+          <Icon name="arrow" class="button__icon" />
+        </a>
+        <a class="button button--outline" href={site.phoneHref}>
+          <Icon name="phone" class="button__icon" />
+          <span class="button__label">電話する</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__visual" data-hero-visual>
+      <div class="hero__image-frame">
+        <Image
+          class="hero__image"
+          src={heroFood}
+          alt="マフィンパニーニの告知ビジュアル"
+          width={750}
+          quality={90}
+          priority
+        />
+      </div>
+      <p class="hero__stamp">SAGAMI-ONO<br />AMERICAN FOOD</p>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#about" aria-label="Klassについてへ移動">
+    <span class="hero__scroll-label">SCROLL</span>
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>

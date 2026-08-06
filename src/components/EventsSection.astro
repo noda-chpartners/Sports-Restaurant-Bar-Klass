@@ -1,0 +1,72 @@
+---
+import { site } from '../data/siteContent';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+
+const calendarId = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID?.trim();
+const appointmentUrl = import.meta.env.PUBLIC_GOOGLE_APPOINTMENT_URL?.trim();
+
+const calendarUrl = calendarId
+  ? `https://calendar.google.com/calendar/embed?${new URLSearchParams({
+      src: calendarId,
+      ctz: 'Asia/Tokyo',
+      mode: 'MONTH',
+      showTitle: '0',
+      showPrint: '0',
+      showTabs: '0',
+      showCalendars: '0',
+      showTz: '0',
+    }).toString()}`
+  : '';
+---
+
+<section class="events section section--cream" id="events">
+  <div class="events__inner container">
+    <div class="events__heading-row">
+      <SectionHeading
+        eyebrow="EVENT CALENDAR"
+        title="イベント＆ご予約"
+        text="開催予定のイベントをカレンダーでご確認いただけます。空き日程のご予約は、予約ページまたはお電話からお申し込みください。"
+      />
+      <span class="events__icon-wrap" aria-hidden="true">
+        <Icon name="calendar" class="events__icon" />
+      </span>
+    </div>
+
+    <div class="events__panel" data-reveal>
+      {calendarUrl ? (
+        <div class="events__calendar-wrap">
+          <iframe
+            class="events__calendar"
+            src={calendarUrl}
+            title="Klass イベントカレンダー"
+            loading="lazy"
+          ></iframe>
+        </div>
+      ) : (
+        <div class="events__empty">
+          <p class="events__empty-label">EVENT INFORMATION</p>
+          <p class="events__empty-title">最新のイベント日程は<br class="u-mobile-only" />お電話・Instagramでご確認ください。</p>
+          <p class="events__empty-text">Googleカレンダー連携後、開催予定がこの場所に表示されます。</p>
+        </div>
+      )}
+
+      <div class="events__actions">
+        {appointmentUrl && (
+          <a class="button button--red" href={appointmentUrl} target="_blank" rel="noreferrer">
+            <Icon name="calendar" class="button__icon" />
+            <span class="button__label">空き日程から予約する</span>
+          </a>
+        )}
+        <a class="button button--dark" href={site.phoneHref}>
+          <Icon name="phone" class="button__icon" />
+          <span class="button__label">電話で問い合わせる</span>
+        </a>
+        <a class="button button--outline-dark" href={site.instagram} target="_blank" rel="noreferrer">
+          <Icon name="instagram" class="button__icon" />
+          <span class="button__label">Instagramを見る</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

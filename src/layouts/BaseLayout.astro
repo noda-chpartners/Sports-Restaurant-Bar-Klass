@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import '../styles/main.scss';
+import { site } from '../data/siteContent';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = `${site.name}｜相模大野のスポーツレストラン＆バー`, description = site.description } = Astro.props;
+const publicSiteUrl = import.meta.env.PUBLIC_SITE_URL?.trim().replace(/\/$/, '');
+const canonicalUrl = publicSiteUrl ? `${publicSiteUrl}${Astro.url.pathname}` : undefined;
+const ogImageUrl = publicSiteUrl ? `${publicSiteUrl}/ogp.png` : '/ogp.png';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: site.name,
+  description,
+  telephone: site.phone,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address,
+    addressRegion: '神奈川県',
+    addressLocality: '相模原市南区',
+    addressCountry: 'JP',
+  },
+  openingHours: 'Mo-Su 11:00-14:00,17:00-02:00',
+  sameAs: [site.instagram],
+  ...(canonicalUrl ? { url: canonicalUrl, image: ogImageUrl } : {}),
+};
+---
+
+<!doctype html>
+<html class="site-html" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080f1d" />
+    <meta name="description" content={description} />
+    <meta name="format-detection" content="telephone=no" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body class="site-body">
+    <slot />
+  </body>
+</html>

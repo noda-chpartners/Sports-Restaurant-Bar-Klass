@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import chickenPopcorn from '../assets/images/klass-chicken-popcorn.jpg';
+import fishAndChips from '../assets/images/klass-fish-and-chips.jpg';
+import menuVisual from '../assets/images/klass-interior-counter.jpg';
+import { additionalMenu, popularMenus } from '../data/siteContent';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section class="menu section section--navy" id="menu">
+  <div class="menu__inner container">
+    <SectionHeading
+      eyebrow="FAVORITES"
+      title="人気メニュー TOP 5"
+      text="しっかり食べたい日にも、仲間とシェアしたい夜にも。Klassで人気のメニューをご紹介します。"
+      theme="light"
+    />
+
+    <div class="menu__layout">
+      <div class="menu__list-wrap" data-reveal>
+        <ol class="menu__list">
+          {popularMenus.map((item) => (
+            <li class="menu__item">
+              <span class="menu__rank">{item.rank}</span>
+              <span class="menu__name">{item.name}</span>
+              <span class="menu__price">{item.price}</span>
+            </li>
+          ))}
+        </ol>
+        <div class="menu__additional">
+          <span class="menu__additional-label">OTHER PICK</span>
+          <span class="menu__additional-name">{additionalMenu.name}</span>
+          <span class="menu__additional-price">{additionalMenu.price}</span>
+        </div>
+      </div>
+
+      <div class="menu__featured" data-reveal>
+        <Image
+          class="menu__featured-image"
+          src={menuVisual}
+          alt="牛タンガーリックバターステーキのメニュー画像"
+          widths={[480, 760]}
+          sizes="(max-width: 820px) 100vw, 38vw"
+        />
+        <div class="menu__featured-note">
+          <span class="menu__featured-label">POPULAR No.3</span>
+          <span class="menu__featured-name">牛タンガーリックバターステーキ</span>
+          <span class="menu__featured-price">1,500円</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu__tax-note">表示価格は税込です。</p>
+
+    <div class="menu__more" data-reveal>
+      <div class="menu__more-heading">
+        <p class="menu__more-eyebrow">MORE FROM KLASS</p>
+        <h3 class="menu__more-title">そのほかのフード</h3>
+      </div>
+      <div class="menu__food-grid">
+        <article class="food-feature">
+          <Image
+            class="food-feature__image"
+            src={fishAndChips}
+            alt="フィッシュ＆チップス 1,000円のメニュー画像"
+            widths={[480, 640, 820]}
+            sizes="(max-width: 720px) 100vw, 48vw"
+          />
+          <div class="food-feature__meta">
+            <h4 class="food-feature__name">フィッシュ＆チップス</h4>
+            <p class="food-feature__price">1,000円</p>
+          </div>
+        </article>
+
+        <article class="food-feature food-feature--light">
+          <Image
+            class="food-feature__image"
+            src={chickenPopcorn}
+            alt="チキンポップコーン ポテトフライ付き 600円のメニュー画像"
+            widths={[480, 640, 820]}
+            sizes="(max-width: 720px) 100vw, 48vw"
+          />
+          <div class="food-feature__meta">
+            <h4 class="food-feature__name">チキンポップコーン</h4>
+            <p class="food-feature__price">600円</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

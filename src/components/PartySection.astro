@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets';
+import courseOverview from '../assets/images/klass-course-menu-overview.jpg';
+import groupCourse from '../assets/images/klass-group-course-ja.jpg';
+import studentCourse from '../assets/images/klass-food-02.jpg';
+import { site } from '../data/siteContent';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section class="party section" id="party">
+  <div class="party__inner container">
+    <div class="party__heading-row">
+      <SectionHeading
+        eyebrow="PARTY AT KLASS"
+        title="集まる夜を、もっと楽しく。"
+        text="グループで楽しめるコースをご用意しています。パーティー貸切など、45〜50名でのご利用もご相談ください。"
+      />
+      <a class="party__call button button--dark" href={site.phoneHref}>
+        <Icon name="phone" class="button__icon" />
+        <span class="button__label">パーティーの相談をする</span>
+      </a>
+    </div>
+
+    <div class="party__cards">
+      <article class="party-card" data-reveal>
+        <div class="party-card__image-wrap">
+          <Image
+            class="party-card__image"
+            src={groupCourse}
+            alt="飲み放題付きグループコース 1名4,400円の案内"
+            widths={[480, 640, 820]}
+            sizes="(max-width: 720px) 100vw, 48vw"
+          />
+        </div>
+        <div class="party-card__meta">
+          <span class="party-card__number">01</span>
+          <h3 class="party-card__title">グループコース</h3>
+          <p class="party-card__detail">飲み放題付き・30〜50名におすすめ</p>
+        </div>
+      </article>
+
+      <article class="party-card party-card--offset" data-reveal>
+        <div class="party-card__image-wrap">
+          <Image
+            class="party-card__image"
+            src={studentCourse}
+            alt="学生向け2時間飲み放題付きコース 1名3,300円の案内"
+            widths={[480, 640, 820]}
+            sizes="(max-width: 720px) 100vw, 48vw"
+          />
+        </div>
+        <div class="party-card__meta">
+          <span class="party-card__number">02</span>
+          <h3 class="party-card__title">学生パーティーコース</h3>
+          <p class="party-card__detail">2時間飲み放題付き</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="party__overview" data-reveal>
+      <div class="party__overview-heading">
+        <p class="party__overview-eyebrow">COURSE LINEUP</p>
+        <h3 class="party__overview-title">コースメニュー一覧</h3>
+        <p class="party__overview-text">スタンダード・プレミアム・学生コースの内容を一覧でご確認いただけます。</p>
+      </div>
+      <div class="party__overview-image-wrap">
+        <Image
+          class="party__overview-image"
+          src={courseOverview}
+          alt="スタンダード、プレミアム、学生向けのグループコースメニュー一覧"
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 820px) 100vw, 78vw"
+        />
+      </div>
+    </div>
+  </div>
+</section>

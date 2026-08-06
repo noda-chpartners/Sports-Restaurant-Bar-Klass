@@ -1,0 +1,21 @@
+{
+  "name": "sports-restaurant-bar-klass",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/astro.mjs dev",
+    "start": "node scripts/astro.mjs dev",
+    "build": "node scripts/astro.mjs check && node scripts/astro.mjs build",
+    "preview": "node scripts/astro.mjs preview",
+    "check": "node scripts/astro.mjs check"
+  },
+  "dependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "gsap": "latest",
+    "lenis": "latest",
+    "sass": "latest",
+    "typescript": "latest"
+  }
+}
