@@ -52,6 +52,15 @@ const structuredData = {
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <title>{title}</title>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script is:inline>
+      try {
+        const savedLanguage = localStorage.getItem('klass-language');
+        if (savedLanguage === 'ja' || savedLanguage === 'en') {
+          document.documentElement.dataset.language = savedLanguage;
+          document.documentElement.classList.add('has-language-choice');
+        }
+      } catch {}
+    </script>
   </head>
   <body class="site-body">
     <slot />

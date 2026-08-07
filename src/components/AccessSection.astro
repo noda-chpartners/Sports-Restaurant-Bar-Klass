@@ -13,36 +13,36 @@ const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(site.addres
         class="access__map"
         src={mapEmbed}
         title="Sports Restaurant&Bar Klass 周辺地図"
+        data-i18n-aria-label="a11y.map"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </div>
 
     <div class="access__content">
-      <SectionHeading eyebrow="ACCESS" title="相模大野駅から徒歩3分。" />
+      <SectionHeading eyebrow="ACCESS" title="相模大野駅から徒歩3分。" titleKey="access.title" />
       <div class="access__details" data-reveal>
         <div class="access__detail">
           <Icon name="map" class="access__detail-icon" />
           <div class="access__detail-body">
             <p class="access__detail-label">ADDRESS</p>
-            <p class="access__detail-value">{site.address}</p>
+            <p class="access__detail-value" data-i18n="access.address">{site.address}</p>
           </div>
         </div>
         <div class="access__detail">
           <Icon name="clock" class="access__detail-icon" />
           <div class="access__detail-body">
             <p class="access__detail-label">OPEN</p>
-            {site.hours.map((hour) => (
-              <p class="access__detail-value">{hour.label}　{hour.value}</p>
-            ))}
-            <p class="access__detail-note">定休日：{site.closed}</p>
+            <p class="access__detail-value" data-i18n="access.weekday">{site.hours[0].label}　{site.hours[0].value}</p>
+            <p class="access__detail-value" data-i18n="access.weekend">{site.hours[1].label}　{site.hours[1].value}</p>
+            <p class="access__detail-note" data-i18n="access.closed">定休日：{site.closed}</p>
           </div>
         </div>
         <div class="access__detail">
           <Icon name="users" class="access__detail-icon" />
           <div class="access__detail-body">
             <p class="access__detail-label">SEATS</p>
-            <p class="access__detail-value">{site.seats} / {site.privateParty}</p>
+            <p class="access__detail-value" data-i18n="access.seats">{site.seats} / {site.privateParty}</p>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ const mapEmbed = `https://www.google.com/maps?q=${encodeURIComponent(site.addres
       <div class="access__actions" data-reveal>
         <a class="button button--red" href={site.mapsUrl} target="_blank" rel="noreferrer">
           <Icon name="map" class="button__icon" />
-          <span class="button__label">Google Mapsで見る</span>
+          <span class="button__label" data-i18n="access.maps">Google Mapsで見る</span>
         </a>
         <a class="access__phone" href={site.phoneHref}>
           <span class="access__phone-label">TEL</span>

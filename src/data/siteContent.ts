@@ -21,29 +21,31 @@ export const site = {
 };
 
 export const navigation = [
-  { label: 'Klassについて', href: '#about' },
-  { label: '人気メニュー', href: '#menu' },
-  { label: 'パーティー', href: '#party' },
-  { label: 'イベント', href: '#events' },
-  { label: 'アクセス', href: '#access' },
+  { label: 'Klassについて', href: '#about', i18nKey: 'nav.about' },
+  { label: '人気メニュー', href: '#menu', i18nKey: 'nav.menu' },
+  { label: 'パーティー', href: '#party', i18nKey: 'nav.party' },
+  { label: 'イベント', href: '#events', i18nKey: 'nav.events' },
+  { label: 'アクセス', href: '#access', i18nKey: 'nav.access' },
 ];
 
 export const popularMenus = [
-  { rank: '01', name: 'ケージャンチキン', price: '1,100円' },
-  { rank: '02', name: 'ビーフタコス', price: '700円' },
-  { rank: '03', name: '牛タンガーリックバターステーキ', price: '1,500円' },
-  { rank: '04', name: '牛タンハンバーグ', price: '1,500円' },
-  { rank: '05', name: 'ハンバーガー', price: '1,200円' },
+  { rank: '01', name: 'ケイジャンチキン', price: '1,100円', nameKey: 'menu.item1.name', priceKey: 'menu.item1.price' },
+  { rank: '02', name: 'ビーフタコス', price: '700円', nameKey: 'menu.item2.name', priceKey: 'menu.item2.price' },
+  { rank: '03', name: '牛タンガーリックバターステーキ', price: '1,500円', nameKey: 'menu.item3.name', priceKey: 'menu.item3.price' },
+  { rank: '04', name: '牛タンハンバーグ', price: '1,500円', nameKey: 'menu.item4.name', priceKey: 'menu.item4.price' },
+  { rank: '05', name: 'ハンバーガー', price: '1,200円', nameKey: 'menu.item5.name', priceKey: 'menu.item5.price' },
 ];
 
 export const additionalMenu = {
   name: 'ジョニースガーリックチキン',
   price: '1,000円',
+  nameKey: 'menu.other.name',
+  priceKey: 'menu.other.price',
 };
 
 export const facts = [
-  { label: '営業時間', value: '11:00–14:00 / 17:00–翌2:00' },
-  { label: '定休日', value: 'なし' },
-  { label: '席数', value: '43席' },
-  { label: '貸切目安', value: '45〜50名' },
+  { label: '営業時間', value: '11:00–14:00 / 17:00–翌2:00', labelKey: 'fact.hours.label', valueKey: 'fact.hours.value' },
+  { label: '定休日', value: 'なし', labelKey: 'fact.closed.label', valueKey: 'fact.closed.value' },
+  { label: '席数', value: '43席', labelKey: 'fact.seats.label', valueKey: 'fact.seats.value' },
+  { label: '貸切目安', value: '45〜50名', labelKey: 'fact.private.label', valueKey: 'fact.private.value' },
 ];

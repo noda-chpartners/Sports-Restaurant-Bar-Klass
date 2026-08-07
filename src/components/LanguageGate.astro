@@ -1,0 +1,98 @@
+---
+import { translations } from '../data/i18n';
+---
+
+<div class="language-gate" data-language-gate role="dialog" aria-modal="true" aria-labelledby="language-gate-title">
+  <div class="language-gate__panel">
+    <p class="language-gate__brand">Klass</p>
+    <p class="language-gate__eyebrow">WELCOME / ようこそ</p>
+    <h2 class="language-gate__title" id="language-gate-title">Choose your language</h2>
+    <p class="language-gate__text">表示言語を選択してください<br />Please select your preferred language.</p>
+    <div class="language-gate__options">
+      <button class="language-gate__option" type="button" data-language-option="ja">
+        <span class="language-gate__option-main">日本語</span>
+        <span class="language-gate__option-sub">JAPANESE</span>
+      </button>
+      <button class="language-gate__option" type="button" data-language-option="en">
+        <span class="language-gate__option-main">English</span>
+        <span class="language-gate__option-sub">英語</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ translations }}>
+  (() => {
+    const storageKey = 'klass-language';
+    const root = document.documentElement;
+    const gate = document.querySelector('[data-language-gate]');
+    const options = document.querySelectorAll('[data-language-option]');
+    const switches = document.querySelectorAll('[data-language-switch]');
+
+    const translate = (language) => {
+      const dictionary = translations[language];
+      if (!dictionary) return;
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        if (key && dictionary[key]) element.textContent = dictionary[key];
+      });
+
+      document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-aria-label');
+        if (key && dictionary[key]) element.setAttribute('aria-label', dictionary[key]);
+      });
+
+      const menuToggle = document.querySelector('[data-menu-toggle]');
+      if (menuToggle?.getAttribute('aria-expanded') === 'true') {
+        menuToggle.setAttribute('aria-label', dictionary['a11y.closeMenu']);
+      }
+
+      switches.forEach((element) => {
+        element.setAttribute('aria-label', dictionary['language.switch']);
+        const label = element.querySelector('[data-language-switch-label]');
+        if (label) label.textContent = dictionary['language.next'];
+      });
+
+      document.querySelectorAll('[data-google-calendar-frame]').forEach((frame) => {
+        const source = frame.getAttribute('src');
+        if (!source) return;
+        const url = new URL(source);
+        url.searchParams.set('hl', language);
+        if (frame.getAttribute('src') !== url.toString()) frame.setAttribute('src', url.toString());
+      });
+
+      root.lang = language;
+      root.dataset.language = language;
+      root.classList.add('has-language-choice');
+      document.body.classList.remove('is-language-locked');
+      gate?.setAttribute('aria-hidden', 'true');
+    };
+
+    const selectLanguage = (language, persist = true) => {
+      translate(language);
+      if (persist) {
+        try { localStorage.setItem(storageKey, language); } catch {}
+      }
+    };
+
+    options.forEach((option) => {
+      option.addEventListener('click', () => selectLanguage(option.dataset.languageOption));
+    });
+
+    switches.forEach((button) => {
+      button.addEventListener('click', () => {
+        selectLanguage(root.dataset.language === 'en' ? 'ja' : 'en');
+      });
+    });
+
+    const savedLanguage = root.dataset.language;
+    if (savedLanguage === 'ja' || savedLanguage === 'en') {
+      selectLanguage(savedLanguage, false);
+    } else {
+      document.body.classList.add('is-language-locked');
+      gate?.setAttribute('aria-hidden', 'false');
+      requestAnimationFrame(() => options[0]?.focus());
+    }
+  })();
+</script>

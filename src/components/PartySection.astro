@@ -15,10 +15,12 @@ import SectionHeading from './SectionHeading.astro';
         eyebrow="PARTY AT KLASS"
         title="集まる夜を、もっと楽しく。"
         text="グループで楽しめるコースをご用意しています。パーティー貸切など、45〜50名でのご利用もご相談ください。"
+        titleKey="party.title"
+        textKey="party.text"
       />
       <a class="party__call button button--dark" href={site.phoneHref}>
         <Icon name="phone" class="button__icon" />
-        <span class="button__label">パーティーの相談をする</span>
+        <span class="button__label" data-i18n="party.call">パーティーの相談をする</span>
       </a>
     </div>
 
@@ -35,8 +37,8 @@ import SectionHeading from './SectionHeading.astro';
         </div>
         <div class="party-card__meta">
           <span class="party-card__number">01</span>
-          <h3 class="party-card__title">グループコース</h3>
-          <p class="party-card__detail">飲み放題付き・30〜50名におすすめ</p>
+          <h3 class="party-card__title" data-i18n="party.group.title">グループコース</h3>
+          <p class="party-card__detail" data-i18n="party.group.detail">飲み放題付き・30〜50名におすすめ</p>
         </div>
       </article>
 
@@ -52,8 +54,8 @@ import SectionHeading from './SectionHeading.astro';
         </div>
         <div class="party-card__meta">
           <span class="party-card__number">02</span>
-          <h3 class="party-card__title">学生パーティーコース</h3>
-          <p class="party-card__detail">2時間飲み放題付き</p>
+          <h3 class="party-card__title" data-i18n="party.student.title">学生パーティーコース</h3>
+          <p class="party-card__detail" data-i18n="party.student.detail">2時間飲み放題付き</p>
         </div>
       </article>
     </div>
@@ -61,8 +63,8 @@ import SectionHeading from './SectionHeading.astro';
     <div class="party__overview" data-reveal>
       <div class="party__overview-heading">
         <p class="party__overview-eyebrow">COURSE LINEUP</p>
-        <h3 class="party__overview-title">コースメニュー一覧</h3>
-        <p class="party__overview-text">スタンダード・プレミアム・学生コースの内容を一覧でご確認いただけます。</p>
+        <h3 class="party__overview-title" data-i18n="party.overview.title">コースメニュー一覧</h3>
+        <p class="party__overview-text" data-i18n="party.overview.text">スタンダード・プレミアム・学生コースの内容を一覧でご確認いただけます。</p>
       </div>
       <div class="party__overview-image-wrap">
         <Image

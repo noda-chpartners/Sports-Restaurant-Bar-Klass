@@ -4,13 +4,16 @@ interface Props {
   title: string;
   text?: string;
   theme?: 'light' | 'dark';
+  eyebrowKey?: string;
+  titleKey?: string;
+  textKey?: string;
 }
 
-const { eyebrow, title, text, theme = 'dark' } = Astro.props;
+const { eyebrow, title, text, theme = 'dark', eyebrowKey, titleKey, textKey } = Astro.props;
 ---
 
 <div class:list={['section-heading', `section-heading--${theme}`]} data-reveal>
-  <p class="section-heading__eyebrow">{eyebrow}</p>
-  <h2 class="section-heading__title">{title}</h2>
-  {text && <p class="section-heading__text">{text}</p>}
+  <p class="section-heading__eyebrow" data-i18n={eyebrowKey}>{eyebrow}</p>
+  <h2 class="section-heading__title" data-i18n={titleKey}>{title}</h2>
+  {text && <p class="section-heading__text" data-i18n={textKey}>{text}</p>}
 </div>

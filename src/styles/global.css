@@ -26,13 +26,13 @@
 }
 
 .site-html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
   background: var(--color-navy);
 }
 
 .site-body {
-  min-width: 320px;
   margin: 0;
   overflow-x: clip;
   color: var(--color-ink);
@@ -45,6 +45,10 @@
 }
 
 .site-body.is-menu-locked {
+  overflow: hidden;
+}
+
+.site-body.is-language-locked {
   overflow: hidden;
 }
 
@@ -224,6 +228,11 @@
 
 .u-mobile-only {
   display: none;
+}
+
+.site-html[data-language='en'] .section-heading__title {
+  letter-spacing: -0.025em;
+  line-height: 1.2;
 }
 
 @media (max-width: 820px) {

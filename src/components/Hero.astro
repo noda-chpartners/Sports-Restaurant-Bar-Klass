@@ -16,15 +16,15 @@ import Icon from './Icon.astro';
         <span class="hero__title-line">GOOD FOOD.</span>
         <span class="hero__title-line hero__title-line--accent">GOOD TIMES.</span>
       </h1>
-      <p class="hero__lead">相模大野駅から徒歩3分。<br class="u-desktop-only" />昼から深夜まで楽しめるSports Restaurant & Bar。</p>
+      <p class="hero__lead" data-i18n="hero.lead">相模大野駅から徒歩3分。昼から深夜まで楽しめるSports Restaurant & Bar。</p>
       <div class="hero__actions">
         <a class="button button--red" href="#menu">
-          <span class="button__label">人気メニューを見る</span>
+          <span class="button__label" data-i18n="hero.menu">人気メニューを見る</span>
           <Icon name="arrow" class="button__icon" />
         </a>
         <a class="button button--outline" href={site.phoneHref}>
           <Icon name="phone" class="button__icon" />
-          <span class="button__label">電話する</span>
+          <span class="button__label" data-i18n="hero.phone">電話する</span>
         </a>
       </div>
     </div>
@@ -43,7 +43,7 @@ import Icon from './Icon.astro';
       <p class="hero__stamp">SAGAMI-ONO<br />AMERICAN FOOD</p>
     </div>
   </div>
-  <a class="hero__scroll" href="#about" aria-label="Klassについてへ移動">
+  <a class="hero__scroll" href="#about" aria-label="Klassについてへ移動" data-i18n-aria-label="a11y.scrollAbout">
     <span class="hero__scroll-label">SCROLL</span>
     <span class="hero__scroll-line"></span>
   </a>

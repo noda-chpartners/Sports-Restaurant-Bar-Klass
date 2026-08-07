@@ -1,0 +1,26 @@
+---
+import { site } from '../data/siteContent';
+import Icon from './Icon.astro';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<a
+  class:list={['instagram-cta', className]}
+  href={site.instagram}
+  target="_blank"
+  rel="noreferrer"
+>
+  <span class="instagram-cta__icon-wrap" aria-hidden="true">
+    <Icon name="instagram" class="instagram-cta__icon" />
+  </span>
+  <span class="instagram-cta__copy">
+    <span class="instagram-cta__eyebrow">INSTAGRAM</span>
+    <span class="instagram-cta__label" data-i18n="instagram.latest">最新情報はこちら！</span>
+  </span>
+  <Icon name="arrow" class="instagram-cta__arrow" />
+</a>

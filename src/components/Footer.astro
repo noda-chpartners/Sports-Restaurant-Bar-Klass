@@ -8,25 +8,25 @@ import Icon from './Icon.astro';
 <footer class="footer">
   <div class="footer__inner container">
     <div class="footer__brand-block">
-      <a class="footer__brand" href="#top" aria-label="Klass トップへ">
+      <a class="footer__brand" href="#top" aria-label="Klass トップへ" data-i18n-aria-label="a11y.top">
         <Image class="footer__logo" src={logo} alt="Klass" width={260} />
       </a>
       <p class="footer__name">{site.name}</p>
-      <p class="footer__address">{site.address}</p>
+      <p class="footer__address" data-i18n="access.address">{site.address}</p>
     </div>
 
-    <nav class="footer__nav" aria-label="フッターナビゲーション">
+    <nav class="footer__nav" aria-label="フッターナビゲーション" data-i18n-aria-label="a11y.footerNav">
       <ul class="footer__nav-list">
         {navigation.map((item) => (
           <li class="footer__nav-item">
-            <a class="footer__nav-link" href={item.href}>{item.label}</a>
+            <a class="footer__nav-link" href={item.href} data-i18n={item.i18nKey}>{item.label}</a>
           </li>
         ))}
       </ul>
     </nav>
 
     <div class="footer__contact">
-      <a class="footer__instagram" href={site.instagram} target="_blank" rel="noreferrer" aria-label="Klass 公式Instagram">
+      <a class="footer__instagram" href={site.instagram} target="_blank" rel="noreferrer" aria-label="Klass 公式Instagram" data-i18n-aria-label="a11y.instagram">
         <Icon name="instagram" class="footer__instagram-icon" />
         <span class="footer__instagram-label">INSTAGRAM</span>
       </a>
@@ -37,7 +37,7 @@ import Icon from './Icon.astro';
   <div class="footer__bottom container">
     <p class="footer__copyright">© Sports Restaurant&Bar Klass</p>
     <a class="footer__back-top" href="#top">
-      <span class="footer__back-label">BACK TO TOP</span>
+      <span class="footer__back-label" data-i18n="footer.back">BACK TO TOP</span>
       <Icon name="arrow" class="footer__back-icon" />
     </a>
   </div>

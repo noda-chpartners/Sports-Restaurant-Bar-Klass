@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/siteContent';
 import Icon from './Icon.astro';
+import InstagramCta from './InstagramCta.astro';
 import SectionHeading from './SectionHeading.astro';
 
 const calendarId = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID?.trim();
@@ -23,11 +24,16 @@ const calendarUrl = calendarId
 <section class="events section section--cream" id="events">
   <div class="events__inner container">
     <div class="events__heading-row">
-      <SectionHeading
-        eyebrow="EVENT CALENDAR"
-        title="イベント＆ご予約"
-        text="開催予定のイベントをカレンダーでご確認いただけます。空き日程のご予約は、予約ページまたはお電話からお申し込みください。"
-      />
+      <div class="events__heading-copy">
+        <SectionHeading
+          eyebrow="EVENT CALENDAR"
+          title="イベント＆ご予約"
+          text="開催予定のイベントをカレンダーでご確認いただけます。空き日程のご予約は、予約ページまたはお電話からお申し込みください。"
+          titleKey="events.title"
+          textKey="events.text"
+        />
+        <p class="events__monthly-copy">Take a look at our monthly calender for what is to come!</p>
+      </div>
       <span class="events__icon-wrap" aria-hidden="true">
         <Icon name="calendar" class="events__icon" />
       </span>
@@ -41,30 +47,30 @@ const calendarUrl = calendarId
             src={calendarUrl}
             title="Klass イベントカレンダー"
             loading="lazy"
+            data-google-calendar-frame
+            data-i18n-aria-label="a11y.calendar"
           ></iframe>
         </div>
       ) : (
         <div class="events__empty">
           <p class="events__empty-label">EVENT INFORMATION</p>
-          <p class="events__empty-title">最新のイベント日程は<br class="u-mobile-only" />お電話・Instagramでご確認ください。</p>
-          <p class="events__empty-text">Googleカレンダー連携後、開催予定がこの場所に表示されます。</p>
+          <p class="events__empty-title" data-i18n="events.empty.title">最新のイベント日程はお電話・Instagramでご確認ください。</p>
+          <p class="events__empty-text" data-i18n="events.empty.text">Googleカレンダー連携後、開催予定がこの場所に表示されます。</p>
         </div>
       )}
+
+      <InstagramCta className="events__instagram-cta" />
 
       <div class="events__actions">
         {appointmentUrl && (
           <a class="button button--red" href={appointmentUrl} target="_blank" rel="noreferrer">
             <Icon name="calendar" class="button__icon" />
-            <span class="button__label">空き日程から予約する</span>
+            <span class="button__label" data-i18n="events.book">空き日程から予約する</span>
           </a>
         )}
         <a class="button button--dark" href={site.phoneHref}>
           <Icon name="phone" class="button__icon" />
-          <span class="button__label">電話で問い合わせる</span>
-        </a>
-        <a class="button button--outline-dark" href={site.instagram} target="_blank" rel="noreferrer">
-          <Icon name="instagram" class="button__icon" />
-          <span class="button__label">Instagramを見る</span>
+          <span class="button__label" data-i18n="events.phone">電話で問い合わせる</span>
         </a>
       </div>
     </div>

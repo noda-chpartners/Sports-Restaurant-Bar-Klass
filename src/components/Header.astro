@@ -7,19 +7,24 @@ import Icon from './Icon.astro';
 
 <header class="header" data-header>
   <div class="header__inner container">
-    <a class="header__brand" href="#top" aria-label="Klass トップへ">
+    <a class="header__brand" href="#top" aria-label="Klass トップへ" data-i18n-aria-label="a11y.top">
       <Image class="header__logo" src={logo} alt="Klass" width={160} densities={[1.5, 2]} />
     </a>
 
-    <nav class="header__desktop-nav" aria-label="メインナビゲーション">
+    <nav class="header__desktop-nav" aria-label="メインナビゲーション" data-i18n-aria-label="a11y.mainNav">
       <ul class="header__nav-list">
         {navigation.map((item) => (
           <li class="header__nav-item">
-            <a class="header__nav-link" href={item.href}>{item.label}</a>
+            <a class="header__nav-link" href={item.href} data-i18n={item.i18nKey}>{item.label}</a>
           </li>
         ))}
       </ul>
     </nav>
+
+    <button class="language-switch" type="button" aria-label="Englishに切り替える" data-language-switch>
+      <span class="language-switch__current">LANG</span>
+      <span class="language-switch__next" data-language-switch-label>EN</span>
+    </button>
 
     <a class="header__phone button button--gold" href={site.phoneHref}>
       <Icon name="phone" class="button__icon" />
@@ -30,6 +35,7 @@ import Icon from './Icon.astro';
       class="menu-toggle"
       type="button"
       aria-label="メニューを開く"
+      data-i18n-aria-label="a11y.openMenu"
       aria-controls="mobile-menu"
       aria-expanded="false"
       data-menu-toggle
@@ -43,13 +49,18 @@ import Icon from './Icon.astro';
 </header>
 
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
-  <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+  <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション" data-i18n-aria-label="a11y.mobileNav">
     <ul class="mobile-menu__list">
       {navigation.map((item, index) => (
         <li class="mobile-menu__item">
           <a class="mobile-menu__link" href={item.href} data-menu-link>
             <span class="mobile-menu__number">0{index + 1}</span>
-            <span class="mobile-menu__label">{item.label}</span>
+            <span class="mobile-menu__label-group">
+              <span class="mobile-menu__label" data-i18n={item.i18nKey}>{item.label}</span>
+              {item.href === '#events' && (
+                <span class="mobile-menu__event-copy">Take a look at our monthly calender for what is to come!</span>
+              )}
+            </span>
             <Icon name="arrow" class="mobile-menu__icon" />
           </a>
         </li>
@@ -59,6 +70,10 @@ import Icon from './Icon.astro';
       <span class="mobile-menu__phone-label">TEL</span>
       <span class="mobile-menu__phone-number">{site.phone}</span>
     </a>
+    <button class="mobile-menu__language" type="button" aria-label="Englishに切り替える" data-language-switch>
+      <span class="mobile-menu__language-label">LANGUAGE</span>
+      <span class="mobile-menu__language-value" data-language-switch-label>EN</span>
+    </button>
   </nav>
 </div>
 
@@ -73,7 +88,8 @@ import Icon from './Icon.astro';
     header.classList.toggle('is-menu-open', isOpen);
     menu.classList.toggle('is-open', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    const isEnglish = document.documentElement.dataset.language === 'en';
+    toggle.setAttribute('aria-label', isOpen ? (isEnglish ? 'Close menu' : 'メニューを閉じる') : (isEnglish ? 'Open menu' : 'メニューを開く'));
     menu.setAttribute('aria-hidden', String(!isOpen));
     document.body.classList.toggle('is-menu-locked', isOpen);
   };

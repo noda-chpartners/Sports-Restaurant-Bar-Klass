@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import burgerVisual from '../assets/images/klass-interior-table.jpg';
 import staffIllustration from '../assets/images/klass-staff-illustration.jpg';
 import { facts } from '../data/siteContent';
+import InstagramCta from './InstagramCta.astro';
 import SectionHeading from './SectionHeading.astro';
 ---
 
@@ -25,16 +26,20 @@ import SectionHeading from './SectionHeading.astro';
         eyebrow="WELCOME TO KLASS"
         title="食事も、スポーツも、仲間との時間も。"
         text="Klassは、ランチから深夜までご利用いただけるSports Restaurant & Barです。相模大野駅から徒歩3分。お一人での食事から、グループでのパーティーまでお楽しみいただけます。"
+        titleKey="about.title"
+        textKey="about.text"
       />
 
       <dl class="about__facts" data-reveal>
         {facts.map((fact) => (
           <div class="about__fact">
-            <dt class="about__fact-label">{fact.label}</dt>
-            <dd class="about__fact-value">{fact.value}</dd>
+            <dt class="about__fact-label" data-i18n={fact.labelKey}>{fact.label}</dt>
+            <dd class="about__fact-value" data-i18n={fact.valueKey}>{fact.value}</dd>
           </div>
         ))}
       </dl>
+
+      <InstagramCta className="about__instagram-cta" />
 
       <div class="about__character" data-reveal>
         <Image
@@ -48,6 +53,21 @@ import SectionHeading from './SectionHeading.astro';
           <span class="about__character-text">GOOD FOOD, GOOD TIMES.</span>
         </p>
       </div>
+    </div>
+  </div>
+
+  <div class="about__story container" data-reveal>
+    <div class="about__story-heading-wrap">
+      <p class="about__story-eyebrow">OUR STORY</p>
+      <h3 class="about__story-heading" data-i18n="about.story.title">Welcome to Sports Dining Bar Klass</h3>
+    </div>
+    <div class="about__story-body">
+      <p class="about__story-text" data-i18n="about.story.p1">気さくなガーナ人オーナー“ジョニー”は日本語ぺらぺら♪</p>
+      <p class="about__story-text" data-i18n="about.story.p2">相模大野駅 北口から徒歩2分のKlassはカジュアルに楽しめるスポーツレストラン &amp; バー です。 狭い入口の先には</p>
+      <p class="about__story-text" data-i18n="about.story.p3">ポップなアメリカン調の空間が広がります！まるで海外のバーで飲んでいる気分♪ 落ち着いた照明の店内には、レゲエ中心の音楽がいつも流れています♪ 心地の良い音楽を聞きながら、初めて出会ったお客さん同士でも皆一緒に盛り上がっちゃいます☆</p>
+      <p class="about__story-text" data-i18n="about.story.p4">最大120人の宴会も大歓迎☆お1人様も入りやすい☆</p>
+      <p class="about__story-text" data-i18n="about.story.p5">なかなか日本では食べることのないグローバルなメニューや各国のお酒が勢揃い♪</p>
+      <p class="about__story-text about__story-text--closing" data-i18n="about.story.p6">是非一度足を運んでみてください☆</p>
     </div>
   </div>
 </section>

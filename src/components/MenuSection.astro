@@ -14,6 +14,8 @@ import SectionHeading from './SectionHeading.astro';
       title="人気メニュー TOP 5"
       text="しっかり食べたい日にも、仲間とシェアしたい夜にも。Klassで人気のメニューをご紹介します。"
       theme="light"
+      titleKey="menu.title"
+      textKey="menu.text"
     />
 
     <div class="menu__layout">
@@ -22,15 +24,15 @@ import SectionHeading from './SectionHeading.astro';
           {popularMenus.map((item) => (
             <li class="menu__item">
               <span class="menu__rank">{item.rank}</span>
-              <span class="menu__name">{item.name}</span>
-              <span class="menu__price">{item.price}</span>
+              <span class="menu__name" data-i18n={item.nameKey}>{item.name}</span>
+              <span class="menu__price" data-i18n={item.priceKey}>{item.price}</span>
             </li>
           ))}
         </ol>
         <div class="menu__additional">
           <span class="menu__additional-label">OTHER PICK</span>
-          <span class="menu__additional-name">{additionalMenu.name}</span>
-          <span class="menu__additional-price">{additionalMenu.price}</span>
+          <span class="menu__additional-name" data-i18n={additionalMenu.nameKey}>{additionalMenu.name}</span>
+          <span class="menu__additional-price" data-i18n={additionalMenu.priceKey}>{additionalMenu.price}</span>
         </div>
       </div>
 
@@ -44,17 +46,17 @@ import SectionHeading from './SectionHeading.astro';
         />
         <div class="menu__featured-note">
           <span class="menu__featured-label">POPULAR No.3</span>
-          <span class="menu__featured-name">牛タンガーリックバターステーキ</span>
-          <span class="menu__featured-price">1,500円</span>
+          <span class="menu__featured-name" data-i18n="menu.featured.name">牛タンガーリックバターステーキ</span>
+          <span class="menu__featured-price" data-i18n="menu.featured.price">1,500円</span>
         </div>
       </div>
     </div>
-    <p class="menu__tax-note">表示価格は税込です。</p>
+    <p class="menu__tax-note" data-i18n="menu.tax">表示価格は税込です。</p>
 
     <div class="menu__more" data-reveal>
       <div class="menu__more-heading">
         <p class="menu__more-eyebrow">MORE FROM KLASS</p>
-        <h3 class="menu__more-title">そのほかのフード</h3>
+        <h3 class="menu__more-title" data-i18n="menu.more">そのほかのフード</h3>
       </div>
       <div class="menu__food-grid">
         <article class="food-feature">
@@ -66,8 +68,8 @@ import SectionHeading from './SectionHeading.astro';
             sizes="(max-width: 720px) 100vw, 48vw"
           />
           <div class="food-feature__meta">
-            <h4 class="food-feature__name">フィッシュ＆チップス</h4>
-            <p class="food-feature__price">1,000円</p>
+            <h4 class="food-feature__name" data-i18n="menu.fish.name">フィッシュ＆チップス</h4>
+            <p class="food-feature__price" data-i18n="menu.fish.price">1,000円</p>
           </div>
         </article>
 
@@ -80,8 +82,8 @@ import SectionHeading from './SectionHeading.astro';
             sizes="(max-width: 720px) 100vw, 48vw"
           />
           <div class="food-feature__meta">
-            <h4 class="food-feature__name">チキンポップコーン</h4>
-            <p class="food-feature__price">600円</p>
+            <h4 class="food-feature__name" data-i18n="menu.chicken.name">チキンポップコーン</h4>
+            <p class="food-feature__price" data-i18n="menu.chicken.price">600円</p>
           </div>
         </article>
       </div>
