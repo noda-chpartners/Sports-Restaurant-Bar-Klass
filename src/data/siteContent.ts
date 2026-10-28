@@ -1,6 +1,8 @@
 export const site = {
   name: 'Sports Restaurant&Bar Klass',
   shortName: 'Klass',
+  googleCalendarId:
+    '99d92cc90cd972244b97add7f1b4873d0bfd374fbf6acf0b39532359f5308b31@group.calendar.google.com',
   description:
     '相模大野駅から徒歩3分。Sports Restaurant&Bar Klassの人気メニュー、パーティー情報、イベント、ご利用案内をご紹介します。',
   phone: '042-765-4755',

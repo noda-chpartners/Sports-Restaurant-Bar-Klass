@@ -4,7 +4,7 @@ import Icon from './Icon.astro';
 import InstagramCta from './InstagramCta.astro';
 import SectionHeading from './SectionHeading.astro';
 
-const calendarId = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID?.trim();
+const calendarId = site.googleCalendarId.trim();
 const appointmentUrl = import.meta.env.PUBLIC_GOOGLE_APPOINTMENT_URL?.trim();
 
 const calendarUrl = calendarId
